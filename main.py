@@ -2,7 +2,6 @@ import os
 from flask import Flask, jsonify, request
 from classification_model import classify
 from flask_cors import CORS
-import cv2
 from PIL import Image
 
 app = Flask(__name__)
