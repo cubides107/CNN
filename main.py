@@ -15,20 +15,11 @@ def index():
 
 @app.route("/classify", methods=['POST'])
 def classify_image():
-    f = request.files['image_src']
-    f.save("./saveImage.jpg")
-    #request_data = request.json
-    #if request_data is None:
-       # return '{"message": "Invalid Request"}'
-   # base64_image = request_data.get("image_src")
-    #if base64_image is None:
-       # return '{"message": "Send a image please!"}'
-    #image = cv2.imread("./saveImage.jpg", cv2.IMREAD_COLOR)
-    im = Image.open("./saveImage.jpg")
-
-    predict, value = classify(im)
-    # return jsonify({"predict": predict, "value": str(value)}), 200
-    return jsonify({"result": predict}), 200
+    file = request.files['image_src']
+    file.save("./saveImage.jpg")
+    image = Image.open("./saveImage.jpg")
+    predict, value = classify(image)
+    return jsonify({"predict": predict, "value": str(value)}), 200
 
 
 def not_found(error):
